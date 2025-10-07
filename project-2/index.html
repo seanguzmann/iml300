@@ -3,35 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML demo</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Before Sunset - HTML Demo</title>
+    <style>
+      body {
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        font-family: sans-serif;
+      }
+
+      .container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #myImage {
+        max-width: 80%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+      }
+
+      #myText {
+        position: absolute;
+        color: white;
+        font-size: 20px;
+        letter-spacing: 1px;
+        text-align: center;
+        cursor: pointer;
+        padding: 20px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      #myText:hover {
+        letter-spacing: 10px
+      }
+    </style>
   </head>
   <body>
-    <h1>A cool title</h1>
 
-    <p>Hello world!</p>
-    <p><a href="page-2.html">Click me</a> to go to another Page</p>
-    <img src="assets/1.jpg" />
-    <img src="assets/cat.gif" />
-    <img src="assets/sunset.gif" />
+    <div class="container">
+      <img id="myImage" src="imageA.jpg" alt="Image A">
 
-    <p id="p1">
-      I like to think (and<br />
-      the sooner the better!)<br />
-      of a cybernetic meadow<br />
-      where mammals and computers<br />
-      live together in mutually<br />
-      programming harmony<br />
-      like pure water<br />
-      touching clear sky.
-    </p>
+      <p id="myText">you can never replace anyone <br>because everyone is made up of <br>such beautiful, specific details</p>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const myText = document.getElementById('myText');
+        const myImage = document.getElementById('myImage')
 
-    <!--     add an image of your choice below -->
+        const imageA_path = 'imageA.jpg';
+        const imageB_path = 'imageB.png';
 
-    <!--     add a paragraph of your choice below -->
+        myText.addEventListener('mouseover', function() {
+          myImage.src = imageB_path;
+        });
 
-    <!--     add a link of your choice below -->
-
-    <!--    create a third html page in this project -->
+        myText.addEventListener('mouseout', function() {
+          myImage.src = imageA_path;
+        });
+      });
+      </script>
   </body>
 </html>
