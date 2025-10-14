@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>the truth about memories</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+      body {
+        background-color: black; /* Faded, nostalgic background color */
+        color: white; /* Dark text for contrast */
+        margin: 0;
+        height: 100vh;
+        
+        display: flex;
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        padding: 20px; /* Add some padding around the columns */
+        box-sizing: border-box;
+      }
+
+      /* Wrapper for the two columns */
+      .content-wrapper {
+          display: flex;
+          width: 90%; /* Adjust total width of the two columns */
+          height: 85vh; /* Adjust total height */
+          gap: 40px; /* Space between the two columns */
+          align-items: center; /* Vertically align items in the middle */
+      }
+
+      /* Left Column: Image */
+      .image-column {
+          flex: 1; /* Takes up one part of the available space */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          position: relative; /* For absolute positioning of the image */
+      }
+
+      /* Right Column: Text and Buttons */
+      .text-column {
+          flex: 1; /* Takes up one part of the available space */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start; /* Align text to the left within its column */
+          text-align: left;
+          height: 100%;
+      }
+
+      /* Image Styling for the Polaroid */
+      .polaroid-image { 
+        width: 100%; /* Fill column width */
+        height: 80%; /* Adjust height within column */
+        object-fit: contain; /* Ensure image fits without cropping */
+        position: absolute; /* Allows for layered effect */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center within image-column */
+        opacity: 1; /* Start focused */
+        transition: opacity 3s ease-in-out; /* Smooth transition */
+      }
+
+      /* Hidden state for the unfocused image */
+      .polaroid-image.unfocused {
+        opacity: 0;
+      }
+      
+      /* Main text specific to this page */
+      .main-text-line {
+          opacity: 0; /* Start hidden */
+          font-size: 1.5rem; /* Slightly larger for this page */
+          font-weight: 300; 
+          letter-spacing: 2px;
+          margin-bottom: 4px; /* Space between lines */
+          transition: opacity 1s ease-in;
+      }
+
+      /* The very last line should have no bottom margin */
+      .main-text-line:last-of-type {
+          margin-bottom: 30px; /* More space before buttons */
+      }
+
+      /* Buttons starting hidden */
+      .buttons {
+          opacity: 0;
+          transition: opacity 1s ease-in;
+          display: flex; /* Override to block for animation */
+      }
+
+      /* Button specific styles for this page (darker text/border) */
+      .button {
+        color: #555555; /* Dark text for light page */
+        border: 1px solid #555555; /* Darker border */
+      }
+      .button:hover {
+        background-color: #555555;
+        color: white !important;
+      }
+    </style>
+</head>
+<body>
+    
+    <div class="content-wrapper">
+        <div class="image-column">
+            <img src="pola2.png" alt="Focused polaroid photo" class="polaroid-image" id="focusedPolaroid">
+            <img src="pola1.png" alt="Unfocused polaroid photo" class="polaroid-image unfocused" id="unfocusedPolaroid">
+        </div>
+
+        <div class="text-column">
+            <div class="main-text-line" id="textLine1">the truth is:</div>
+            <div class="main-text-line" id="textLine2">we are already memories</div>
+            
+            <div class="buttons" id="final-buttons">
+                <a href="wreck.html" class="button">i know.</a>
+                <a href="wreck.html" class="button">no we're not!</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const focusedPolaroid = document.getElementById('focusedPolaroid');
+        const unfocusedPolaroid = document.getElementById('unfocusedPolaroid');
+        const textLines = [
+            document.getElementById('textLine1'),
+            document.getElementById('textLine2')
+        ];
+        const buttons = document.getElementById('final-buttons');
+
+        let currentDelay = 1000; // Initial delay before animation starts
+
+        // Step 1: Fade from focused to unfocused image
+        setTimeout(() => {
+            focusedPolaroid.style.opacity = '0'; // Hide focused image
+            unfocusedPolaroid.style.opacity = '1'; // Reveal unfocused image
+        }, currentDelay);
+
+        currentDelay += 3000; // Add time for image transition (3 seconds)
+
+        // Step 2: Reveal text line by line
+        textLines.forEach((line, index) => {
+            setTimeout(() => {
+                line.style.opacity = '1';
+            }, currentDelay + (index * 1500)); // Delay each line by 1.5 seconds
+        });
+
+        currentDelay += (textLines.length * 1500); // Add time for all text lines
+
+        // Step 3: Reveal buttons
+        setTimeout(() => {
+            buttons.style.opacity = '1';
+        }, currentDelay + 1000); // 1 second after last text line
+    </script>
+
+</body>
+</html>

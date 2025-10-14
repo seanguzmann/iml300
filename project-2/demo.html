@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Before Sunset - HTML Demo</title>
+    <style>
+      body {
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        font-family: sans-serif;
+      }
+
+      .container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #myImage {
+        max-width: 80%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+      }
+
+      #myText {
+        position: absolute;
+        color: white;
+        font-size: 20px;
+        letter-spacing: 1px;
+        text-align: center;
+        cursor: pointer;
+        padding: 20px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      #myText:hover {
+        letter-spacing: 10px
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <img id="myImage" src="imageA.jpg" alt="Image A">
+
+      <p id="myText">you can never replace anyone <br>because everyone is made up of <br>such beautiful, specific details</p>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const myText = document.getElementById('myText');
+        const myImage = document.getElementById('myImage')
+
+        const imageA_path = 'imageA.jpg';
+        const imageB_path = 'imageB.png';
+
+        myText.addEventListener('mouseover', function() {
+          myImage.src = imageB_path;
+        });
+
+        myText.addEventListener('mouseout', function() {
+          myImage.src = imageA_path;
+        });
+      });
+      </script>
+  </body>
+</html>

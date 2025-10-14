@@ -1,52 +1,58 @@
+/* *** General/Global Styles for All Pages *** */
+
 body {
-  background-image: url("assets/sky.gif");
-  background-size: cover;
-  height: 100vh;
+    margin: 0;
+    /* Removed height: 100vh and width: 100vw because the new HTML will handle centering */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
 }
 
-img {
-  height: 150px;
-  border-radius: 20px;
-  padding: 10px;
-  transition: 1s;
-  filter: grayscale(100%);
-  /*      border: 3px solid blue; */
+/* Container for text and buttons */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center text/buttons within the container */
+    text-align: center;
+    padding: 0 20px; /* Added horizontal padding for safety */
+    box-sizing: border-box;
 }
 
-img:hover {
-  height: 400px;
-  filter: grayscale(0%);
-  /*   border: 1px solid red; */
+/* Styling for the main text - SMALLER */
+.main-text {
+    font-size: 1.2rem; 
+    font-weight: 300; 
+    margin-bottom: 20px; 
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); 
+    letter-spacing: 2px;
+    text-align: center;
 }
 
-p:hover {
-  /*   transform: rotate(5deg); */
-  letter-spacing: 1em;
+/* Grouping for the buttons */
+.buttons {
+    display: flex;
+    gap: 15px; 
+    padding-top: 10px
+    text-align: center;
+    justify-content: center;
 }
 
-.specialCenter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Styling for the interactive buttons/links */
+.button {
+    text-decoration: none; 
+    color: inherit; 
+    border: 1px solid currentColor; 
+    padding: 5px 10px; 
+    margin-top: 15px;
+    min-width: 50px;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.8rem; 
+    letter-spacing: 1px; 
+    text-align: center;
 }
 
-h1,
-a {
-  animation: coolAnimation 3s infinite;
-}
-
-#p1 {
-  animation: coolAnimation 5s infinite;
-}
-
-@keyframes coolAnimation {
-  0% {
-    color: red;
-  }
-  50% {
-    color: green;
-  }
-  100% {
-    color: blue;
-  }
+/* Hover effect for buttons */
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: black !important; 
+    cursor: pointer;
 }
