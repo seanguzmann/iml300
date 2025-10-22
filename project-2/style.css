@@ -1,22 +1,18 @@
-/* *** General/Global Styles for All Pages *** */
 
 body {
     margin: 0;
-    /* Removed height: 100vh and width: 100vw because the new HTML will handle centering */
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
 }
 
-/* Container for text and buttons */
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center text/buttons within the container */
+    align-items: center; 
     text-align: center;
-    padding: 0 20px; /* Added horizontal padding for safety */
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
-/* Styling for the main text - SMALLER */
 .main-text {
     font-size: 1.2rem; 
     font-weight: 300; 
@@ -25,8 +21,6 @@ body {
     letter-spacing: 2px;
     text-align: center;
 }
-
-/* Grouping for the buttons */
 .buttons {
     display: flex;
     gap: 15px; 
@@ -35,7 +29,6 @@ body {
     justify-content: center;
 }
 
-/* Styling for the interactive buttons/links */
 .button {
     text-decoration: none; 
     color: inherit; 
@@ -43,16 +36,15 @@ body {
     padding: 5px 10px; 
     margin-top: 15px;
     min-width: 50px;
-    border-radius: 3px;
-    transition: background-color 0.3s, color 0.3s;
+    border-radius: 8px; 
+    transition: background-color 0.4s ease, color 0.4s ease; 
     font-size: 0.8rem; 
     letter-spacing: 1px; 
     text-align: center;
 }
 
-/* Hover effect for buttons */
 .button:hover {
-    background-color: rgba(255, 255, 255, 0.9); 
+    background-color: rgba(255, 255, 255, 0.6); 
     color: black !important; 
     cursor: pointer;
 }
