@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Wreck</title>
+    <title>the wreck</title>
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -40,9 +40,9 @@
           width: 100%;
           height: 100%;
           background-color: black;
-          z-index: 0; /* Above the video, below the text */
-          opacity: 0; /* Starts transparent */
-          transition: opacity 5s ease-in-out; /* Fades in slowly */
+          z-index: 0; /* above the video, below the text */
+          opacity: 0; /* starts transparent */
+          transition: opacity 5s ease-in-out; /* fades in slowly */
       }
 
       #start-button {
@@ -68,8 +68,8 @@
         z-index: 999;
         width: 100%;
         text-align: center;
-        opacity: 0; /* Start hidden */
-        transition: opacity 1s 5.5s; /* Delay the fade-in until AFTER the screen is black */
+        opacity: 0; /* start hidden */
+        transition: opacity 1s 5.5s; /* delay the fade-in until after the screen is black */
       }
       
       .main-text {
@@ -117,7 +117,7 @@
             navigator.mediaDevices.getUserMedia({ video: true })
                 .then(stream => {
                     video.srcObject = stream;
-                    video.style.opacity = '1'; // Show the video
+                    video.style.opacity = '1'; // show the video
                     
                     // starts the overlay fade in
                     overlay.style.opacity = '1'; 
