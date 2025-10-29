@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the void</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+      body {
+        /* page starts in pure black */
+        background-color: black;
+        color: white; 
+        margin: 0;
+        height: 100vh;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        /* smooth transition into different colors */
+        transition: background-color 10s ease-in-out; 
+      }
+      
+      #instruction {
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-size: 1rem;
+          font-weight: 300;
+          letter-spacing: 2px;
+          opacity: 1;
+          transition: opacity 0.5s;
+      }
+      
+      /* transition to the next page */
+      #next-link {
+          display: none; 
+          color: black;
+          text-decoration: none;
+          font-size: 2rem;
+          font-weight: bold;
+          opacity: 0;
+          transition: opacity 1.5s ease-out;
+      }
+    </style>
+</head>
+<body>
+    
+    <div id="instruction">press any key to return</div>
+    
+    <a href="wreck.html" id="next-link"></a>
+    
+    <script>
+        let transitionStarted = false;
+        const bodyElement = document.body;
+        const instructionElement = document.getElementById('instruction');
+        const nextLinkElement = document.getElementById('next-link');
+
+        function startVoidTransition() {
+            if (transitionStarted) return;
+            transitionStarted = true;
+            
+            // initial prompt hidden
+            instructionElement.style.opacity = '0';
+            
+            // slow fade to white
+            setTimeout(() => {
+                bodyElement.style.backgroundColor = 'white';
+            }, 500); // 0.5s delay after button disappears
+
+            // once white, reveal text
+            setTimeout(() => {
+                // Change link text, then make it visible
+                nextLinkElement.textContent = 'CONFRONT THE QUESTION';
+                nextLinkElement.style.display = 'block';
+                
+                // Set text color to black (since the background is white)
+                nextLinkElement.style.color = 'black'; 
+                
+                // fade text in
+                nextLinkElement.style.opacity = '1';
+            }, 10500); // fade to white + buffer
+
+            // fade link, reset to black
+            setTimeout(() => {
+                nextLinkElement.style.opacity = '0';
+                bodyElement.style.backgroundColor = 'black';
+            }, 15500); 
+            
+            // direct to next page after fade
+            setTimeout(() => {
+                window.location.href = "wreck.html";
+            }, 26000); 
+        }
+
+        document.addEventListener('keydown', startVoidTransition);
+        document.addEventListener('click', startVoidTransition);
+    </script>
+
+</body>
+</html>

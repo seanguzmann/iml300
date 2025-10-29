@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find You</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    <script src="const-sketch.js"></script>
+
+    <style>
+      body {
+        background-color: black;
+        color: white; 
+        margin: 0;
+        height: 100vh;
+        position: relative;
+        /* The canvas itself handles the full-screen background */
+      }
+      
+      /* Target the p5.js canvas element */
+      canvas {
+        display: block; 
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1; 
+      }
+
+      /* Centered Text Container - Layered on top of the drawing */
+      .container {
+        position: absolute;
+        top: 50%; /* Centered vertically */
+        left: 50%; /* Centered horizontally */
+        transform: translate(-50%, -50%); /* Final centering adjustment */
+        
+        z-index: 999;
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+        
+        /* Ensure the content is left-aligned within the container */
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+      }
+      
+      /* Styling for the main text */
+      .main-text {
+        /* This size uses your uniform 1.2rem from style.css */
+        font-size: 1.2rem;
+        font-weight: 300;
+        margin-bottom: 20px;
+        opacity: 0; /* Starts hidden */
+        transition: opacity 2s ease-in;
+      }
+      
+      /* Button container styling */
+      .buttons {
+          opacity: 0; /* Starts hidden */
+          transition: opacity 2s 1s ease-in; /* Fade in 1s after text fade-in */
+      }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="main-text" id="main-text-line">if i could find you again, i would.</h1>
+
+        <div class="buttons" id="choice-buttons">
+            <a href="quiet.html" class="button">if i could</a>
+            <a href="void.html" class="button">i would</a>
+        </div>
+    </div>
+    
+    <script>
+        const mainText = document.getElementById('main-text-line');
+        const buttons = document.getElementById('choice-buttons');
+        
+        // Fade in the text and buttons when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Text fades in over 2 seconds
+            mainText.style.opacity = '1'; 
+            
+            // Buttons fade in after the text is visible
+            setTimeout(() => {
+                buttons.style.opacity = '1';
+            }, 1000); 
+        });
+    </script>
+</body>
+</html>

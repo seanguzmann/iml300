@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Quiet</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+      body {
+        /* neutral background in case of image failure */
+        background-color: #1a1a1a;
+        color: white; 
+        margin: 0;
+        height: 100vh;
+        
+        /* Center the content */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      
+      /* bg image takes up entire screen */
+      #ocean-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        
+        /* Initial state: slightly darkened/dimmed for the "storm was for this" reveal */
+        opacity: 0.8;
+        filter: brightness(0.2); 
+        transition: filter 3s ease-in-out; /* transition for stillness effect */
+      }
+      
+      /* Centered Text Container */
+      .container {
+        position: absolute;
+        top: 35%;
+        left: 10%;
+        z-index: 999;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+        align-items: flex-start;
+        text-align: left;
+        transition: opacity 1.5s ease-in;
+      }
+      
+      /* Styling for the acceptance text */
+      .main-text {
+        font-size: 1.2rem;
+        font-weight: 300;
+        margin-bottom: 40px;
+        opacity: 0; /* Starts hidden */
+        transition: opacity 1.5s;
+        
+        /* Animation for the gentle pulse (defined in JS) */
+        animation-duration: 3s; 
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      
+      /* gentle breating pulse */
+      @keyframes gentlePulse {
+          from { opacity: 0.9; }
+          to { opacity: 1; }
+      }
+
+      /* Single button style */
+      .button {
+        display: inline-block;
+        margin-top: 150px;
+        opacity: 0; /* Starts hidden */
+        transition: opacity 1.5s 1s; /* Fade in 1 second after the text */
+      }
+    </style>
+</head>
+<body>
+    
+    <img src="assets/sereneocean.png" alt="Still dark ocean at dawn" id="ocean-bg">
+
+    <div class="container">
+        <h1 class="main-text" id="quiet-text">this quiet, this is what the storm was for.</h1>
+
+        <a href="void.html" class="button" id="next-button">confront the question</a>
+    </div>
+    
+    <script>
+        const oceanBg = document.getElementById('ocean-bg');
+        const quietText = document.getElementById('quiet-text');
+        const nextButton = document.getElementById('next-button');
+        let moveTimer;
+        const stillnessDuration = 2500; // 2.5 seconds of stillness required
+
+        // 1. Initial Reveal: Fade in text and button after page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            quietText.style.opacity = '1';
+            nextButton.style.opacity = '1';
+        });
+
+        // 2. Function to trigger the "Stillness Effect"
+        function triggerStillness() {
+            // Brighten the image (remove the initial dimness)
+            oceanBg.style.filter = 'brightness(1.0)';
+            
+            // Start the gentle text pulse animation
+            quietText.style.animationName = 'gentlePulse'; 
+        }
+
+        // 3. Mouse Movement Logic
+        document.addEventListener('mousemove', () => {
+            // Reset the state every time the mouse moves
+            oceanBg.style.filter = 'brightness(0.3)';
+            quietText.style.animationName = 'none'; // Stop the pulse
+            
+            // Clear any existing timer
+            clearTimeout(moveTimer);
+            
+            // Start a new timer: if the mouse is still for 2.5 seconds, trigger the effect
+            moveTimer = setTimeout(triggerStillness, stillnessDuration);
+        });
+        
+        // Initial setup for the first load (in case user doesn't move mouse)
+        // Set a timer to start the stillness effect automatically after 5s
+        setTimeout(triggerStillness, 5000); 
+    </script>
+
+</body>
+</html>
