@@ -8,92 +8,84 @@
 
     <style>
       body {
-        background-color: black; /* Faded, nostalgic background color */
-        color: white; /* Dark text for contrast */
+        background-color: black; 
+        color: white;
         margin: 0;
         height: 100vh;
         
         display: flex;
-        justify-content: center; /* Center content horizontally */
-        align-items: center; /* Center content vertically */
-        padding: 20px; /* Add some padding around the columns */
+        justify-content: center; 
+        align-items: center; 
+        padding: 20px; 
         box-sizing: border-box;
       }
-
-      /* Wrapper for the two columns */
+      
       .content-wrapper {
           display: flex;
-          width: 90%; /* Adjust total width of the two columns */
-          height: 85vh; /* Adjust total height */
-          gap: 40px; /* Space between the two columns */
-          align-items: center; /* Vertically align items in the middle */
+          width: 90%; 
+          height: 85vh; 
+          gap: 40px; 
+          align-items: center; 
       }
 
-      /* Left Column: Image */
       .image-column {
-          flex: 1; /* Takes up one part of the available space */
+          flex: 1; 
           display: flex;
           justify-content: center;
           align-items: center;
           height: 100%;
-          position: relative; /* For absolute positioning of the image */
+          position: relative; 
       }
 
-      /* Right Column: Text and Buttons */
       .text-column {
-          flex: 1; /* Takes up one part of the available space */
+          flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: flex-start; /* Align text to the left within its column */
+          align-items: flex-start; 
           text-align: left;
           height: 100%;
       }
 
-      /* Image Styling for the Polaroid */
       .polaroid-image { 
-        width: 100%; /* Fill column width */
-        height: 80%; /* Adjust height within column */
-        object-fit: contain; /* Ensure image fits without cropping */
-        position: absolute; /* Allows for layered effect */
+        width: 100%; 
+        height: 80%;
+        object-fit: contain; 
+        position: absolute; 
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%); /* Center within image-column */
-        opacity: 1; /* Start focused */
-        transition: opacity 3s ease-in-out; /* Smooth transition */
+        transform: translate(-50%, -50%); 
+        opacity: 1; /* start focused */
+        transition: opacity 3s ease-in-out; /* smooth transition to blur */
       }
 
-      /* Hidden state for the unfocused image */
       .polaroid-image.unfocused {
         opacity: 0;
       }
       
-      /* Main text specific to this page */
       .main-text-line {
-          opacity: 0; /* Start hidden */
-          font-size: 1.5rem; /* Slightly larger for this page */
+          opacity: 0; 
+          font-size: 1.5rem; 
           font-weight: 300; 
           letter-spacing: 2px;
-          margin-bottom: 4px; /* Space between lines */
+          margin-bottom: 4px;
           transition: opacity 1s ease-in;
       }
 
-      /* The very last line should have no bottom margin */
       .main-text-line:last-of-type {
-          margin-bottom: 30px; /* More space before buttons */
+          margin-bottom: 30px; 
       }
 
-      /* Buttons starting hidden */
       .buttons {
           opacity: 0;
           transition: opacity 1s ease-in;
-          display: flex; /* Override to block for animation */
+          display: flex;
       }
 
-      /* Button specific styles for this page (darker text/border) */
+      /* button specific styles for this page (darker text/border) */
       .button {
-        color: #555555; /* Dark text for light page */
-        border: 1px solid #555555; /* Darker border */
+        color: #555555; /* dark text for light page */
+        border: 1px solid #555555; /* darker border */
       }
       .button:hover {
         background-color: #555555;
@@ -129,26 +121,26 @@
         ];
         const buttons = document.getElementById('final-buttons');
 
-        let currentDelay = 1000; // Initial delay before animation starts
+        let currentDelay = 1000; // initial delay before animation starts
 
-        // Step 1: Fade from focused to unfocused image
+        // fade from focused to unfocused image
         setTimeout(() => {
-            focusedPolaroid.style.opacity = '0'; // Hide focused image
-            unfocusedPolaroid.style.opacity = '1'; // Reveal unfocused image
+            focusedPolaroid.style.opacity = '0'; // hide focused image
+            unfocusedPolaroid.style.opacity = '1'; // reveal unfocused image
         }, currentDelay);
 
-        currentDelay += 3000; // Add time for image transition (3 seconds)
+        currentDelay += 3000; // image transition (3 seconds)
 
-        // Step 2: Reveal text line by line
+        // reveal text line by line
         textLines.forEach((line, index) => {
             setTimeout(() => {
                 line.style.opacity = '1';
-            }, currentDelay + (index * 1500)); // Delay each line by 1.5 seconds
+            }, currentDelay + (index * 1500)); // delay each line by 1.5 seconds
         });
 
-        currentDelay += (textLines.length * 1500); // Add time for all text lines
+        currentDelay += (textLines.length * 1500); // add time for all text lines
 
-        // Step 3: Reveal buttons
+        // reveal buttons
         setTimeout(() => {
             buttons.style.opacity = '1';
         }, currentDelay + 1000); // 1 second after last text line
