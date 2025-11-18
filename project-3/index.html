@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Third Cinema Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <p id="date">LOADING DATE...</p>
+            <p id="time">LOADING TIME...</p>
+            <p id="location">LOADING LOC...</p>
+        </div>
+        
+        <nav class="header-right">
+            <a href="home.html">HOME</a>
+            <a href="index.html">INDEX</a>
+            <a href="about.html">ABOUT</a>
+        </nav>
+    </header>
+
+    <main class="list-layout">
+        <div class="index-container">
+            
+            <h1 class="list-main-title">THE THIRD CINEMA PROJECT</h1>
+
+            <ul class="film-list">
+                
+                <li>
+                    <span class="film-title">EL MESTIZO</span>
+                    <span class="film-meta">1989 &nbsp; DIRECTED BY MARIO HANDLER</span>
+                </li>
+
+                <li>
+                    <span class="film-title">LA PLAYA D.C.</span>
+                    <span class="film-meta">2012 &nbsp; DIRECTED BY JUAN ANDRES ARANGO GARCIA</span>
+                </li>
+
+                <li>
+                    <span class="film-title">THE EXCEPTION AND THE RULE</span>
+                    <span class="film-meta">1997 &nbsp; DIRECTED BY JOEL ZITO ARAUJO</span>
+                </li>
+
+                <li>
+                    <span class="film-title">MORE CINEMA COMING SOON</span>
+                </li>
+
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        function updateDashboard() {
+            const now = new Date();
+            const dateOptions = { month: 'long', day: 'numeric' };
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', dateOptions).toUpperCase();
+            document.getElementById('time').innerText = now.toLocaleTimeString('en-US');
+        }
+
+        function getLocation() {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                let city = timeZone.split('/').pop();
+                if (!city) city = "EARTH"; 
+                city = city.replace(/_/g, ' ').toUpperCase();
+                document.getElementById('location').innerText = city;
+            } catch (e) {
+                document.getElementById('location').innerText = "WORLDWIDE";
+            }
+            
+        }
+        getLocation();
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+
+</body>
+</html>

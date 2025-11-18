@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Third Cinema Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <p id="date">LOADING DATE...</p>
+            <p id="time">LOADING TIME...</p>
+            <p id="location">LOADING LOC...</p>
+        </div>
+        
+        <nav class="header-right">
+            <a href="home.html">HOME</a>
+            <a href="index.html">INDEX</a>
+            <a href="about.html">ABOUT</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="media-box" id="slideshow">
+            <img src="jerome.webp" class="slide active" alt="Film Archive 1">
+            <img src="mestizo.jpg" class="slide" alt="Film Archive 2">
+            <img src="micheaux.jpg" class="slide" alt="Film Archive 3">
+            <img src="saragomez.webp" class="slide" alt="Film Archive 4">
+            <img src="sghi.webp" class="slide" alt="Film Archive 5">
+            <img src="thevillagekeeper.webp"class="slide" alt="Film Archive 6">
+
+    </div>
+        <h1 class="project-title">THE THIRD CINEMA PROJECT</h1>
+    </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // --- clock & location logic ---
+        function updateDashboard() {
+            const now = new Date();
+
+            // 1. update date (format: MONTH DD)
+            document.getElementById('date').innerText = 
+                now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }).toUpperCase();
+
+            // 2. update time (format: HH:MM:SS)
+            document.getElementById('time').innerText = 
+                now.toLocaleTimeString('en-US');
+        }
+
+        function getLocation() {
+
+            // 3. update location (using timzone)
+            try {
+
+                // gets timezone string (e.g., America/Los_Angeles or Europe/London)
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+                // get the city name "LosAngeles" or "London"
+                let city = timeZone.split('/').pop() || "EARTH";
+
+                // replaces underscore with a space ("Los_Angeles to Los Angeles") and makes it uppercase
+                document.getElementById('location').innerText = city.replace(/_/g, ' ').toUpperCase();
+            } catch (e) {
+                document.getElementById('location').innerText = "WORLDWIDE";
+            }
+        }
+
+        // --- slideshow logic ---
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function nextSlide() {
+            // if no slides found, stop running
+            if (slides.length === 0) return;
+
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function startSlideShow() {
+            // clear any existing timer just in case
+            if (slideInterval) clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 3000); // 3000ms = 3 seconds
+        }
+
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+
+        // only start if slides exist
+        if (slides.length > 0) {
+            const container = document.getElementById('slideshow');
+            
+            // start slideshow cycle
+            startSlideShow();
+
+            // stop slideshow on hover
+            if (container) {
+                container.addEventListener('mouseenter', stopSlideShow);
+                container.addEventListener('mouseleave', startSlideShow);
+            }
+        } else {
+            console.error("No images with class '.slide' were found!");
+        }
+
+        // initalizes dashboard
+        getLocation();
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    });
+</script>
+
+</body>
+</html>

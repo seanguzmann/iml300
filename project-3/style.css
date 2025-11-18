@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #880000;
+    color: #000000;
+    font-family: "Times New Roman", Times, serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* no scrolling on this page */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 2rem 2rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    transform: scaleY(1.3); 
+    line-height: 0.9;
+}
+
+.header-left, .header-right {
+    font-size: 3rem;
+    font-weight: normal;
+}
+
+.header-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.header-right a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.header-right a:hover {
+    font-style: italic; /* italicized on hover */
+}
+
+/* --- main content --- */
+main {
+    flex: 1; /* Takes up remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    padding-bottom: 5rem; /* Visual balance */
+}
+
+.media-box {
+    width: 50vw;  /* 50% of viewport width */
+    height: 40vh; /* 40% of viewport height */
+    background-color: #D9D9D9; /* The light gray placeholder */
+    margin-bottom: 2rem; /* Space between box and title */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Subtle depth */
+}
+
+.project-title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: normal;
+    transform: scaleY(1.3); 
+}
+
+/* --- slideshow --- */
+
+.media-box {
+    position: relative; 
+    width: 50vw;       
+    height: 40vh;       
+    overflow: hidden;  
+    background-color: #000; 
+}
+
+.slide {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    opacity: 0;         
+    transition: opacity 1s ease-in-out;
+    z-index: 0;         
+}
+
+.slide.active {
+    opacity: 1;         
+    z-index: 2;        
+}
+
+/* mobile adjustment */
+@media (max-width: 768px) {
+    .header-left, .header-right {
+        font-size: 1.5rem;
+    }
+    
+    .media-box {
+        width: 80vw;
+    }
+    
+    .project-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
+/* --- about page --- */
+
+.about-container {
+    width: 55vw; /* controlling width */
+    
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    line-height: 1.2;
+    color: #000000;
+    text-align: left; 
+}
+
+.about-container p {
+    margin-bottom: 2.5rem; /*  gap between two paragraphs */
+}
+
+.bold-text {
+    font-weight: 700; /* project title bold */
+}
+
+/* mobile adjustment */
+@media (max-width: 768px) {
+    .about-container {
+        width: 80vw; /* wider on phones so text isn't squished */
+        font-size: 1.2rem;
+    }
+}
+/* --- index page --- */
+
+/* adjusts the main container alignment for this specific page */
+.list-layout {
+    align-items: flex-start; 
+    justify-content: center;
+    padding-top: 5vh; 
+}
+
+.index-container {
+    width: 90vw; 
+    margin-left: 2rem; 
+}
+
+.list-main-title {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 5rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+    transform: scaleY(1.3); 
+    transform-origin: left; 
+    border-bottom: 1px solid black; 
+}
+
+.film-list {
+    list-style: none; /* removes bullet points */
+}
+
+.film-list li {
+    border-bottom: 1px solid black; 
+    padding: 0.2rem 0; 
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap; 
+}
+
+.film-title {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-right: 1rem; 
+    transform: scaleY(1.3); 
+}
+
+.film-meta {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: "Times New Roman", Times, serif; 
+    transform: scaleY(1.1); 
+}
+
+/* mobile adjustment */
+@media (max-width: 768px) {
+    .list-main-title { font-size: 3rem; }
+    .film-title { font-size: 2rem; }
+    .film-meta { font-size: 1rem; }
+}

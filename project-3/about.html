@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Third Cinema Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <p id="date">LOADING DATE...</p>
+            <p id="time">LOADING TIME...</p>
+            <p id="location">LOADING LOC...</p>
+        </div>
+        
+        <nav class="header-right">
+            <a href="home.html">HOME</a>
+            <a href="index.html">INDEX</a>
+            <a href="about.html">ABOUT</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-container">
+            <p>
+                <span class="bold-text">THE THIRD CINEMA PROJECT</span> is a digital archive & streaming platform dedicated exclusively to lost and under-distributed Afro-Latino and Black independent films from the latter half of the 20th century through the present day and into the future.
+            </p>
+            <p>
+                This site doubly serves as a spiritual space to honor the artists who created this lost media and were systemically erased by the mainstream industry.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        function updateDashboard() {
+            const now = new Date();
+            const dateOptions = { month: 'long', day: 'numeric' };
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', dateOptions).toUpperCase();
+            document.getElementById('time').innerText = now.toLocaleTimeString('en-US');
+        }
+
+        function getLocation() {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                let city = timeZone.split('/').pop();
+                if (!city) city = "EARTH"; 
+                city = city.replace(/_/g, ' ').toUpperCase();
+                document.getElementById('location').innerText = city;
+            } catch (e) {
+                document.getElementById('location').innerText = "WORLDWIDE";
+            }
+        }
+        getLocation();
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+
+</body>
+</html>
