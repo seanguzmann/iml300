@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch - The Third Cinema Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="enable-scroll">
+
+    <header>
+        <div class="header-left">
+            <p id="date">LOADING DATE...</p>
+            <p id="time">LOADING TIME...</p>
+            <p id="location">LOADING LOC...</p>
+        </div>
+        
+        <nav class="header-right">
+            <a href="index.html">HOME</a>
+            <a href="index.html">INDEX</a>
+            <a href="about.html">ABOUT</a>
+        </nav>
+    </header>
+
+    <main class="watch-layout">
+        
+        <div class="cinema-container">
+            <iframe 
+                src="https://www.youtube.com/embed/3iS2fbe4clU?si=xU95xydd0i8sFSlA" 
+                title="Film Player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="film-details">
+            <h1 class="film-main-title">JAMES BALDWIN IN PARIS</h1>
+            
+            <div class="film-credits">
+                <p>1970 &nbsp;|&nbsp; DIRECTED BY TERENCE DIXON</p>
+                <p>RUN TIME: 18 MIN</p>
+            </div>
+
+            <p class="film-synopsis">
+                A British film crew set out to make a straightforward literary portrait of James Baldwin set in Paris, insisting on setting aside his political activism.
+            </p>
+        </div>
+
+    </main>
+
+    <script>
+        function updateDashboard() {
+            const now = new Date();
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }).toUpperCase();
+            document.getElementById('time').innerText = now.toLocaleTimeString('en-US');
+        }
+
+        function getLocation() {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                let city = timeZone.split('/').pop() || "EARTH";
+                document.getElementById('location').innerText = city.replace(/_/g, ' ').toUpperCase();
+            } catch (e) {
+                document.getElementById('location').innerText = "WORLDWIDE";
+            }
+        }
+        getLocation();
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+
+</body>
+</html>

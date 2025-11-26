@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Director - The Third Cinema Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="enable-scroll"> <header>
+        <div class="header-left">
+            <p id="date">LOADING...</p>
+            <p id="time">LOADING...</p>
+            <p id="location">LOADING...</p>
+        </div>
+        <nav class="header-right">
+            <a href="index.html">HOME</a>
+            <a href="index.html">INDEX</a>
+            <a href="about.html">ABOUT</a>
+        </nav>
+    </header>
+
+    <main class="director-layout">
+        
+        <h1 class="director-name">MARIO HANDLER</h1>
+
+        <div class="mosaic-grid">
+            
+            <div class="mosaic-item left-image">
+                <img src="mario1.jpg" alt="Director Portrait">
+            </div>
+
+            <div class="mosaic-column-middle">
+                <div class="mosaic-text-box">
+                    <p>Mario Handler is a renowned Uruguayan filmmaker and photographer, widely recognized as a pioneer of Uruguayan militant cinema and a key figure in the New Latin American Cinema movement.</p>
+                </div>
+                <div class="mosaic-text-box">
+                    <p>Handler's work primarily focuses on social and political themes, especially class struggles and the lives of marginalized individuals.</p>
+                </div>
+            </div>
+
+            <div class="mosaic-item right-image">
+                 <img src="mario2.png" alt="Film Still">
+            </div>
+
+        </div>
+
+        <div class="director-filmography">
+            <h2 class="section-title">SELECTED FILMOGRAPHY</h2>
+            
+            <ul class="film-list">
+                <li>
+                        <span class="film-title"><a href="watch.html">JAMES BALDWIN IN PARIS</a></span>
+                        <span class="film-meta">1970</span>
+                    </a>
+                </li>
+                <li>
+                        <span class="film-title">MORE CINEMA COMING SOON</span>
+                        <span class="film-meta">SOON</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+
+    <script>
+        function updateDashboard() {
+            const now = new Date();
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }).toUpperCase();
+            document.getElementById('time').innerText = now.toLocaleTimeString('en-US');
+        }
+        function getLocation() {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                let city = timeZone.split('/').pop() || "EARTH";
+                document.getElementById('location').innerText = city.replace(/_/g, ' ').toUpperCase();
+            } catch (e) { document.getElementById('location').innerText = "WORLDWIDE"; }
+        }
+        getLocation();
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+</body>
+</html>
