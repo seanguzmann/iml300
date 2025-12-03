@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Third Cinema Project</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="header-left">
-            <p id="date">LOADING DATE...</p>
-            <p id="time">LOADING TIME...</p>
-            <p id="location">LOADING LOC...</p>
+            <p id="date">LOADING...</p>
+            <p id="clock-display">LOADING...</p>
+            <p id="location">LOADING...</p>
         </div>
         
         <nav class="header-right">
@@ -47,7 +49,7 @@
                 now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }).toUpperCase();
 
             // 2. update time (format: HH:MM:SS)
-            document.getElementById('time').innerText = 
+            document.getElementById('clock-display').innerText = 
                 now.toLocaleTimeString('en-US');
         }
 
@@ -115,6 +117,5 @@
         updateDashboard();
     });
 </script>
-
 </body>
 </html>

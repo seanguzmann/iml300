@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janicza Bravo - The Third Cinema Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="enable-scroll"> <header>
+        <div class="header-left">
+            <p id="date">LOADING...</p>
+            <p id="time">LOADING...</p>
+            <p id="location">LOADING...</p>
+        </div>
+        <nav class="header-right">
+            <a href="index.html">HOME</a>
+            <a href="index.html">INDEX</a>
+            <a href="about.html">ABOUT</a>
+        </nav>
+    </header>
+
+   <main class="director-layout">
+    
+    <h1 class="director-name">JANICZA BRAVO</h1>
+
+    <div class="visuals-row">
+        <img src="bravo1.jpg" alt="photo of director" class="visual-item">
+        <img src="bravo2.jpg" alt="photo of director" class="visual-item narrow">
+        <img src="bravo3.jpg" alt="photo of director" class="visual-item">
+    </div>
+
+    <div class="bio-section">
+        <p class="bio-text">
+            Janicza Bravo is an American film director, film producer, and screenwriter. Her films include Gregory Go Boom, a winner of the short-film jury award at the Sundance Film Festival; Lemon, co-written with Brett Gelman; and Zola, co-written with playwright Jeremy O. Harris.
+        </p>
+
+        <div class="director-quote">
+            "PEOPLE HAD TO DIE IN ORDER FOR ME TO BECOME A FULL PERSON IN THEIR EYES."
+        </div>
+    </div>
+
+    <div class="director-filmography">
+        <h2 class="section-title">SELECTED FILMOGRAPHY</h2>
+        <ul class="film-list">
+            <li>
+                <span class="film-title"><a href="https://tubitv.com/movies/100040520/beba">BEBA</a></span>
+                 <span class="film-meta">2021</span>
+                 </a>
+            </li>
+            <li>
+                <span class="film-title">MORE CINEMA COMING SOON</span>
+            </li>
+        </ul>
+    </div>
+
+</main>
+
+    <script>
+        function updateDashboard() {
+            const now = new Date();
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }).toUpperCase();
+            document.getElementById('time').innerText = now.toLocaleTimeString('en-US');
+        }
+        function getLocation() {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                let city = timeZone.split('/').pop() || "EARTH";
+                document.getElementById('location').innerText = city.replace(/_/g, ' ').toUpperCase();
+            } catch (e) { document.getElementById('location').innerText = "WORLDWIDE"; }
+        }
+        getLocation();
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara Gómez - The Third Cinema Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="enable-scroll"> <header>
+        <div class="header-left">
+            <p id="date">LOADING...</p>
+            <p id="time">LOADING...</p>
+            <p id="location">LOADING...</p>
+        </div>
+        <nav class="header-right">
+            <a href="index.html">HOME</a>
+            <a href="index.html">INDEX</a>
+            <a href="about.html">ABOUT</a>
+        </nav>
+    </header>
+
+   <main class="director-layout">
+    
+    <h1 class="director-name">SARA GÓMEZ</h1>
+
+    <div class="visuals-row">
+        <img src="sgomez1.webp" alt="photo of director" class="visual-item">
+        <img src="sgomez2.webp" alt="photo of director" class="visual-item narrow">
+        <img src="sgomez3.jpg" alt="photo of director" class="visual-item">
+    </div>
+
+    <div class="bio-section">
+        <p class="bio-text">
+            Sara Gómez, aka Sarita Gómez, came from the folkloric Havana neighborhood of Guanabacoa. Her community was of Afro Cuban popular culture and a marginal sector of Cuba with many issues, such as racism and gender inequality. She studied music (piano), literature, and Afro Cuban ethnography. 
+
+        <p class="bio-text">
+            Gómez directed multiple short documentaries that emphasized and criticized the Cuban revolutionary society. Her short films explored the positions of women and Afro-Cubans within society. She married fellow director Hector Veitia and had a daughter, Iddia. In 1967, on the set of Y Tenemos Sabor, she met Germinal Hernandez. She was the director, and he was a sound technician. They started an affair, later married, and had two children, Ibis and Alfredo. As a member of ICAIC (Cuban Institute of Cinematographic Art and Industry) during its early years, she was one of only two black filmmakers in attendance. She was the institute's first and, for her lifetime, Cuba's only woman director. Gómez is known for her first and final feature-length film, De Cierta Manera (One Way or Another) (1974). She was a revolutionary filmmaker concerned with representing the Afro-Cuban community, women's issues, and the treatment of the marginalized sectors of society.  
+        </p>
+    </div>
+
+    <div class="director-filmography">
+        <h2 class="section-title">SELECTED FILMOGRAPHY</h2>
+        <ul class="film-list">
+            <li>
+                <span class="film-title"><a href="https://www.criterionchannel.com/one-way-or-another">ONE WAY OR ANOTHER</a></span>
+                 <span class="film-meta">1977</span>
+                 </a>
+            </li>
+            <li>
+                <span class="film-title">MORE CINEMA COMING SOON</span>
+            </li>
+        </ul>
+    </div>
+
+</main>
+
+    <script>
+        function updateDashboard() {
+            const now = new Date();
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }).toUpperCase();
+            document.getElementById('time').innerText = now.toLocaleTimeString('en-US');
+        }
+        function getLocation() {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                let city = timeZone.split('/').pop() || "EARTH";
+                document.getElementById('location').innerText = city.replace(/_/g, ' ').toUpperCase();
+            } catch (e) { document.getElementById('location').innerText = "WORLDWIDE"; }
+        }
+        getLocation();
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+</body>
+</html>

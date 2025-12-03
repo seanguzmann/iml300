@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Third Cinema Project</title>
+    <title>Index - The Third Cinema Project</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-    <header>
+<body class="enable-scroll"> <header>
         <div class="header-left">
             <p id="date">LOADING DATE...</p>
-            <p id="time">LOADING TIME...</p>
+            <p id="clock-display">LOADING TIME...</p>
             <p id="location">LOADING LOC...</p>
         </div>
         
@@ -28,30 +28,69 @@
             <h1 class="list-main-title">THE THIRD CINEMA PROJECT</h1>
 
             <ul class="film-list">
-                
-                <li>
-                    <span class="film-title">EL MESTIZO</span>
-                    <span class="film-meta">1989 &nbsp; <a href="handler.html">DIRECTED BY MARIO HANDLER</a></span> 
-                </li>
 
                 <li>
-                    <span class="film-title">LA PLAYA D.C.</span>
+                    <span class="film-title"><a href="https://www.amazon.com/gp/video/detail/amzn1.dv.gti.d2b46f89-a58c-0c5c-7202-3b7da2b32ab3?autoplay=0&ref_=atv_cf_strg_wb">LA PLAYA D.C</a></span>
                     <span class="film-meta">2012 &nbsp; DIRECTED BY JUAN ANDRES ARANGO GARCIA</span>
                 </li>
 
                 <li>
-                    <span class="film-title">THE EXCEPTION AND THE RULE</span>
+                    <span class="film-title"><a href="https://www.youtube.com/watch?v=756yqGg5BsU">THE EXCEPTION AND THE RULE</a></span>
                     <span class="film-meta">1997 &nbsp; DIRECTED BY JOEL ZITO ARAUJO</span>
                 </li>
 
                 <li>
-                    <span class="film-title"><a href="watch.html">JAMES BALDWIN IN PARIS</a></span>
+                    <span class="film-title"><a href="https://mubi.com/en/us/films/meeting-the-man-james-baldwin-in-paris">JAMES BALDWIN IN PARIS</a></span>
                     <span class="film-meta">1970 &nbsp; DIRECTED BY TERENCE DIXON</span>
                     </a>
                 </li>
 
                 <li>
+                    <span class="film-title"><a href="https://www.youtube.com/watch?v=y7eIPEaIZ3M">BLACK MEXCIANS</a></span>
+                    <span class="film-meta">2018 &nbsp; DIRECTED BY JORGE PÉREZ SOLANO</span>
+                    </a>
+                </li>
+
+                <li>
+                    <span class="film-title"><a href="https://www.youtube.com/watch?v=AKs_M8Skm1M">LUDI</a></span>
+                    <span class="film-meta">2021 &nbsp; DIRECTED BY EDSON JEAN</span>
+                    </a>
+                </li>
+
+                <li>
+                    <span class="film-title"><a href="https://tubitv.com/movies/100040520/beba">BEBA</a></span>
+                    <span class="film-meta">2021 &nbsp; <a href="huntt.html">DIRECTED BY REBECA HUNTT</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <span class="film-title"><a href="https://www.hbomax.com/movies/black-orpheus/276bf925-d584-4499-a6f2-5b23ca2b741e?utm_source=universal_search">ORFEU NEGRO</a></span>
+                    <span class="film-meta">1959 &nbsp; DIRECTED BY MARCEL CAMUS</span>
+                    </a>
+                </li>
+
+                <li>
+                    <span class="film-title"><a href="https://www.youtube.com/watch?v=2iwEPNLMI8U">SARA GOMEZ: AN AFRO-CUBAN FILMMAKER</a></span>
+                    <span class="film-meta">2005 &nbsp; DIRECTED BY ALESSANDRA MULLER &nbsp; <a href="gomez.html">LEARN MORE ABOUT SARA</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <span class="film-title"><a href="https://tubitv.com/movies/100002844/zola?start=true&tracking=google-feed&utm_source=google-feed">ZOLA</a></span>
+                    <span class="film-meta">2020 &nbsp; <a href="bravo.html">DIRECTED BY JANICZA BRAVO</a></span>
+                    </a>
+                </li>
+
+                <li>
+                    <span class="film-title"><a href="https://www.netflix.com/watch/81039550?source=35">KING RICHARD</a></span>
+                    <span class="film-meta">2021 &nbsp; <a href="green.html">DIRECTED BY REINALDO MARCUS GREEN</a></span>
+                    </a>
+                </li>
+
+                <li>
                     <span class="film-title">MORE CINEMA COMING SOON</span>
+                    <span class="film-meta">STAY TUNED</span>
+                    </a>
                 </li>
 
             </ul>
@@ -63,7 +102,7 @@
             const now = new Date();
             const dateOptions = { month: 'long', day: 'numeric' };
             document.getElementById('date').innerText = now.toLocaleDateString('en-US', dateOptions).toUpperCase();
-            document.getElementById('time').innerText = now.toLocaleTimeString('en-US');
+            document.getElementById('clock-display').innerText = now.toLocaleTimeString('en-US');
         }
 
         function getLocation() {

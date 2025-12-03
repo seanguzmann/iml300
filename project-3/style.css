@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    
 }
 
 body {
@@ -195,6 +197,13 @@ main {
     font-family: "Times New Roman", Times, serif; 
     transform: scaleY(1.1); 
 }
+.film-list a {
+    transition: color 0.2s ease; 
+}
+
+.film-list a:hover {
+    color: #FFFFFF !important; 
+}
 
 /* mobile adjustment */
 @media (max-width: 768px) {
@@ -203,24 +212,24 @@ main {
     .film-meta { font-size: 1rem; }
 }
 
-/* --- Watch Page Styling --- */
+/* --- watch page styling --- */
 
 .watch-layout {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers the player horizontally */
+    align-items: center;
     justify-content: flex-start;
-    padding-top: 0; /* Adjust if you need it lower */
+    padding-top: 0; 
     width: 100%;
 }
 
 .cinema-container {
-    width: 80vw; /* Takes up 80% of screen width */
-    aspect-ratio: 16 / 9; /* FORCES the box to stay in rectangular movie shape */
-    background-color: #000; /* Black background behind video */
+    width: 80vw; 
+    aspect-ratio: 16 / 9; 
+    background-color: #000; 
     margin-top: 3rem;
-    margin-bottom: 2rem; /* Space between video and text */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Cinema-style shadow */
+    margin-bottom: 2rem; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
 }
 
 .cinema-container iframe {
@@ -248,7 +257,7 @@ main {
 }
 
 .film-credits {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Clean font for data */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -266,7 +275,7 @@ main {
     max-width: 600px; 
 }
 
-/* Mobile Adjustment */
+/* mobile adjustment */
 @media (max-width: 768px) {
     .cinema-container { width: 95vw; }
     .film-details { width: 95vw; }
@@ -274,119 +283,139 @@ main {
     .film-credits { flex-direction: column; gap: 0.5rem; }
 }
 
-/* --- Scroll Override --- */
+/* --- scroll override --- */
 .enable-scroll {
     overflow-y: auto !important; 
     height: auto !important; 
     min-height: 100vh; 
 }
-/* --- Director Page Styling --- */
+
+/* --- director page styling --- */
 
 .director-layout {
     width: 90vw;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 .director-name {
     font-family: "Times New Roman", Times, serif;
-    font-size: 6rem; /* Huge text */
+    font-size: 5rem; 
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 2rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     letter-spacing: -2px;
     transform: scaleY(1.3);
     line-height: 0.8;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: normal;
 }
 
-.mosaic-grid {
-    display: grid;
-    /* creates 3 columns: wide, narrow, wide */
-    grid-template-columns: 1.5fr 0.8fr 1.5fr; 
-    gap: 1rem; 
-    height: 60vh; 
+/* visuals row */
+.visuals-row {
+    display: flex;
+    justify-content: space-between; /* spreads out evenly */
+    width: 100%;
+    height: 250px; /* locks heights / adjust number to make them bigger/smaller */
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.visual-item {
+    height: 100%; /* fills the 250px height */
+    object-fit: cover; /* crops image cleanly */
+    flex: 2; /* default: visuals take up equal wide space */
+    filter: grayscale(100%);
+}
+
+.visual-item.narrow {
+    flex: 1; /* middle image will be half the width of the others */
+}
+
+/* bio and quote */
+.bio-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* prevents text from getting too wide to read */
     margin-bottom: 4rem;
 }
 
-/* images inside the grid */
-.mosaic-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /*  images fill the box without squishing */
-    filter: grayscale(100%); /* makes images B&W to fit theme */
-}
-
-.mosaic-column-middle {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; 
-    height: 100%;
-}
-
-.mosaic-text-box {
-    background-color: #D9D9D9; /* gray background */
-    flex: 1; /* makes both boxes equal height */
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mosaic-text-box p {
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 1rem;
+.bio-text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
     line-height: 1.4;
-    font-weight: bold;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: justify;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.director-quote {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2.5rem;
     text-transform: uppercase;
     text-align: center;
+    line-height: 1;
+    margin: 1rem 0 3rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid black;    
+    border-bottom: 1px solid black;
+    width: 100%; 
+    transform: scaleY(1.1);
 }
 
 .director-filmography {
     border-top: 1px solid black;
     padding-top: 2rem;
-}
-
-.section-title {
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-}
-
-.film-link {
-    text-decoration: none;
-    color: black;
-    display: flex;
-    justify-content: space-between;
     width: 100%;
 }
 
-/* --- Mobile Responsiveness --- */
+/* mobile adjustment */
 @media (max-width: 768px) {
     .director-name { font-size: 3rem; }
     
-    .mosaic-grid {
-        grid-template-columns: 1fr; /* stack everything in 1 column */
+    .visuals-row {
+        flex-direction: column; /* stack images vertically */
         height: auto;
     }
     
-    .mosaic-item { height: 300px; }
-    
-    .mosaic-column-middle { height: auto; }
+    .visual-item {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 10px;
+    }
 }
-/* --- FORCE LINKS TO BE BLACK (NO BLUE) --- */
 
-/* 1. Target every state of the link (Unvisited, Visited, Active) */
+/* --- forces links to be black instead of blye --- */
+
 a, a:link, a:visited, a:active {
-    color: #000000 !important;       /* Forces text to Black */
-    text-decoration: none !important; /* Removes the Underline */
+    color: #000000 !important;       /* forces text to black */
+    text-decoration: none !important; /* removes the underline */
     cursor: pointer;
 }
 
-/* 2. Target the Hover state (Keep your Italics) */
 a:hover {
     font-style: italic !important;
-    color: #000000 !important;       /* Keeps it Black when hovering */
-    text-decoration: none !important; /* Keeps underline off */
+    color: #000000 !important;       /* keep black when hovering */
+    text-decoration: none !important; /* keeps underline off */
+}
+
+/* --- gloabl film grain overlay --- */
+canvas {
+    display: block;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999 !important; /* Huge number to force it on top */
+    pointer-events: none;
 }

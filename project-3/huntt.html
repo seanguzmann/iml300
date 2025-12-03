@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebeca Huntt - The Third Cinema Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="enable-scroll"> <header>
+        <div class="header-left">
+            <p id="date">LOADING...</p>
+            <p id="clock-display">LOADING...</p>
+            <p id="location">LOADING...</p>
+        </div>
+        <nav class="header-right">
+            <a href="home.html">HOME</a>
+            <a href="index.html">INDEX</a>
+            <a href="about.html">ABOUT</a>
+        </nav>
+    </header>
+
+   <main class="director-layout">
+    
+    <h1 class="director-name">REBECA HUNTT</h1>
+
+    <div class="visuals-row">
+        <img src="rhuntt1.webp" alt="photo of director" class="visual-item">
+        <img src="rhuntt2.jpg" alt="photo of director" class="visual-item narrow">
+        <img src="rhunt3.avif" alt="photo of director" class="visual-item">
+    </div>
+
+    <div class="bio-section">
+        <p class="bio-text">
+            Rebeca Huntt is an Afro-Latina writer and director born and raised in New York City. She wrote and directed her first feature-length film Beba, which premiered at the Toronto International Film Festival and was released by NEON in 2022.
+        </p>
+
+        <div class="director-quote">
+            "I WANTED TO EXPLORE THE PSYCHIC WOUNDS FAMILIES INFLICT ON ONE ANOTHER."
+        </div>
+
+        <p class="bio-text">
+            Race is central to Beba (2021)'s story. She carries the ancestry of her dark-skinned Dominican father and light-skinned Venezuelan mother, immigrants who met in New York. Her father rose from poverty into the working class, moving his family into “the best I could afford.”
+        </p>
+    </div>
+
+    <div class="director-filmography">
+        <h2 class="section-title">SELECTED FILMOGRAPHY</h2>
+        <ul class="film-list">
+            <li>
+                <span class="film-title"><a href="https://tubitv.com/movies/100040520/beba">BEBA</a></span>
+                 <span class="film-meta">2021</span>
+                 </a>
+            </li>
+            <li>
+                <span class="film-title">MORE CINEMA COMING SOON</span>
+            </li>
+        </ul>
+    </div>
+
+</main>
+
+    <script>
+        function updateDashboard() {
+            const now = new Date();
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }).toUpperCase();
+            document.getElementById('clock-display').innerText = now.toLocaleTimeString('en-US');
+        }
+        function getLocation() {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                let city = timeZone.split('/').pop() || "EARTH";
+                document.getElementById('location').innerText = city.replace(/_/g, ' ').toUpperCase();
+            } catch (e) { document.getElementById('location').innerText = "WORLDWIDE"; }
+        }
+        getLocation();
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+</body>
+</html>

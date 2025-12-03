@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinaldo Marcus Green - The Third Cinema Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="enable-scroll"> <header>
+        <div class="header-left">
+            <p id="date">LOADING...</p>
+            <p id="clock-display">LOADING...</p>
+            <p id="location">LOADING...</p>
+        </div>
+        <nav class="header-right">
+            <a href="index.html">HOME</a>
+            <a href="index.html">INDEX</a>
+            <a href="about.html">ABOUT</a>
+        </nav>
+    </header>
+
+   <main class="director-layout">
+    
+    <h1 class="director-name">REINALDO MARCUS GREEN</h1>
+
+    <div class="visuals-row">
+        <img src="green1.jpg" alt="photo of director" class="visual-item">
+        <img src="green2.webp" alt="photo of director" class="visual-item narrow">
+        <img src="green3.webp" alt="photo of director" class="visual-item">
+    </div>
+
+    <div class="bio-section">
+        <p class="bio-text">
+            Reinaldo Marcus Green is an American director, producer, and writer known for directing films like King Richard and the Bob Marley biopic One Love, as well as the HBO series We Own This City and the Netflix series Top Boy. He began his career after a previous career in education and corporate programming, switching to filmmaking after attending NYU's Tisch School of the Arts. His work often focuses on true stories and human drama. 
+        </p>
+
+        <div class="director-quote">
+            "I NEED TO FEEL IN ORDER TO CREATE, AND IT COMES BOTH FROM A PLACE OF DEEP EMOTIONAL PAIN, AND SINCERE AND UTTER JOY."
+        </div>
+
+        <p class="bio-text">
+            Reinaldo Marcus Green's creativity is rooted in his ability to find his unique voice, tell powerful stories about unsung heroes, and approach filmmaking as a collaborative, team-oriented process. He prioritizes authenticity, drawing from personal experiences and thorough research to tell intimate stories, and emphasizes a collaborative, "best idea wins" environment on set to create the most impactful work. 
+    </div>
+
+    <div class="director-filmography">
+        <h2 class="section-title">SELECTED FILMOGRAPHY</h2>
+        <ul class="film-list">
+            <li>
+                <span class="film-title"><a href="https://www.netflix.com/watch/81039550?source=35">KING RICHARD</a></span>
+                 <span class="film-meta">2021</span>
+                 </a>
+            </li>
+            <li>
+                <span class="film-title">MORE CINEMA COMING SOON</span>
+            </li>
+        </ul>
+    </div>
+
+</main>
+
+    <script>
+        function updateDashboard() {
+            const now = new Date();
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }).toUpperCase();
+            document.getElementById('clock-display').innerText = now.toLocaleTimeString('en-US');
+        }
+        function getLocation() {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                let city = timeZone.split('/').pop() || "EARTH";
+                document.getElementById('location').innerText = city.replace(/_/g, ' ').toUpperCase();
+            } catch (e) { document.getElementById('location').innerText = "WORLDWIDE"; }
+        }
+        getLocation();
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+</body>
+</html>
