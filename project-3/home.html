@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Third Cinema Project</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="sketch.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -115,6 +116,16 @@
         getLocation();
         setInterval(updateDashboard, 1000);
         updateDashboard();
+
+        // checks if 'introShown' exists in session storage
+        if (sessionStorage.getItem('introShown') !== 'true') {
+            
+            // if not shown yet: Hide body instantly, then fade in
+            $('body').css('display', 'none').fadeIn(2000);
+            
+            // mark as shown so it doesn't happen on refresh
+            sessionStorage.setItem('introShown', 'true');
+        }
     });
 </script>
 </body>

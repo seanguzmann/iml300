@@ -12,7 +12,7 @@ function setup() {
 function draw() {
   clear(); // clear frame
 
-  // black grain with low opacity
+  // white grain with high opacity
   fill(255, 100); // increase second value to increase grain
 
   // map mouse position to a small offset value

@@ -9,11 +9,11 @@
 <body class="enable-scroll"> <header>
         <div class="header-left">
             <p id="date">LOADING...</p>
-            <p id="time">LOADING...</p>
+            <p id="clock-display">LOADING...</p>
             <p id="location">LOADING...</p>
         </div>
         <nav class="header-right">
-            <a href="index.html">HOME</a>
+            <a href="home.html">HOME</a>
             <a href="index.html">INDEX</a>
             <a href="about.html">ABOUT</a>
         </nav>
@@ -59,7 +59,7 @@
         function updateDashboard() {
             const now = new Date();
             document.getElementById('date').innerText = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }).toUpperCase();
-            document.getElementById('time').innerText = now.toLocaleTimeString('en-US');
+            document.getElementById('clock-display').innerText = now.toLocaleTimeString('en-US');
         }
         function getLocation() {
             try {
